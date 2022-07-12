@@ -28,6 +28,14 @@ class ViewController: UIViewController {
         self.burgerView.backgroundColor = .white
         self.view.addSubview(burgerView)
         
+        let redView = UIView(frame: CGRect(x: 0, y: 100, width: burgerView.frame.width, height: 100))
+        redView.backgroundColor = .red
+        burgerView.addSubview(redView)
+        
+        let redButton = UIButton(frame: CGRect(x: 0, y: 100, width: burgerView.frame.width, height: 100))
+        burgerView.addSubview(redButton)
+        redButton.addTarget(self, action: #selector(redButtonPressed), for: .touchUpInside)
+        
     }
     
     private func createBlurView(){
@@ -45,6 +53,10 @@ class ViewController: UIViewController {
           self.burgerView.frame.origin.x = 0 - self.burgerView.frame.width
           self.blurView.removeFromSuperview()
       }
+    }
+    
+    @objc private func redButtonPressed(){
+        self.view.backgroundColor = .red
     }
 }
 
