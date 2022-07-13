@@ -6,15 +6,15 @@ class ViewController: UIViewController {
     let burgerView = UIView()
     let size: CGFloat = 100
     var blurView = UIVisualEffectView()
-   // let blur = UIBlurEffect()
-
+    // let blur = UIBlurEffect()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addBurgerView()
         
         
     }
-
+    
     @IBAction func burgerButtonPressed(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3) {
             self.burgerView.frame.origin.x = 0
@@ -48,15 +48,36 @@ class ViewController: UIViewController {
         
     }
     
-  @objc  private func tap(){
-      UIView.animate(withDuration: 0.3) {
-          self.burgerView.frame.origin.x = 0 - self.burgerView.frame.width
-          self.blurView.removeFromSuperview()
-      }
+    @objc  private func tap(){
+        UIView.animate(withDuration: 0.3) {
+            self.burgerView.frame.origin.x = 0 - self.burgerView.frame.width
+            self.blurView.removeFromSuperview()
+        }
     }
     
     @objc private func redButtonPressed(){
         self.view.backgroundColor = .red
     }
+    @IBAction func login(_ sender: UIButton)  {
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "Create new item"
+            
+            textField = alertTextField
+        }
+        
+        let action = UIAlertAction(title: "Add item", style: .default) { action in
+            print(textField.text!)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
+
+//extension UIViewController {
+//    func showAlert(
+//}
